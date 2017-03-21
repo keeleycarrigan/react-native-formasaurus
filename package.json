@@ -1,6 +1,6 @@
 {
   "name": "react-native-formasaurus",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A flexible layout and validation component for forms in React Native.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "https://github.com/keeleycarrigan/react-native-formasaurus/"
   },
   "keywords": [
-	"React",
+    "React",
     "React Native",
     "forms",
     "React Native components"
