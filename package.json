@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/keeleycarrigan/react-native-formasaurus.git"
+    "url": "https://github.com/keeleycarrigan/react-native-formasaurus/"
   },
   "keywords": [
 	"React",
