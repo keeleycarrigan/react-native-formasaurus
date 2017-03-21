@@ -1,0 +1,32 @@
+{
+  "name": "react-native-formasaurus",
+  "version": "0.9.0",
+  "description": "A flexible layout and validation component for forms in React Native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/keeleycarrigan/react-native-formasaurus.git"
+  },
+  "keywords": [
+	"React",
+    "React Native",
+    "forms",
+    "React Native components"
+  ],
+  "author": "Keeley Carrigan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keeleycarrigan/react-native-formasaurus/issues"
+  },
+  "homepage": "https://github.com/keeleycarrigan/react-native-formasaurus#readme",
+  "dependencies": {
+    "color-js": "^1.0.4",
+    "lodash": "^4.17.4",
+    "react": "^15.4.2",
+    "react-native": "0.41.2",
+    "react-native-vector-icons": "^4.0.0"
+  }
+}
