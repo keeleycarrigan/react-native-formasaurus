@@ -18,16 +18,18 @@ import {
 
 export class FormToggle extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
+		
+		const { active } = props;
 
-		this.state = { active: props.active || false }
+		this.state = { active: typeof(active) !== 'undefined' ? active : false }
 	}
 
 	componentWillReceiveProps(next_props) {
 		const { active } = next_props;
 
-		if (active && active !== this.state.active) {
-			this.setState({ active: !this.state.active }, () => {
+		if (typeof(active) !== 'undefined' && active !== this.state.active) {
+			this.setState({ active }, () => {
 				this.onToggle(this.state.active);
 			});
 		}
@@ -45,7 +47,9 @@ export class FormToggle extends Component {
 		}
 
 		this.setState({ active: !this.state.active }, () => {
-			this.props.onPress(this.props.name, this.props.value, this.state.active, this.props.type, this.onToggle);
+			if (typeof(this.props.onPress) === 'function') {
+				this.props.onPress(this.props.name, this.props.value, this.state.active, this.props.type, this.onToggle);
+			}
 		});
 	}
 
