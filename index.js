@@ -51,6 +51,7 @@ export default class Formasaurus extends Component {
 			...this.setInputValues(props.children)
 		};
 
+		console.log(this.state)
 	}
 
 	static Checkbox = FormCheckbox;
@@ -100,7 +101,7 @@ export default class Formasaurus extends Component {
 				return;
 			} else {
 				const {
-					active,
+					// active,
 					children,
 					multiselect,
 					name,
@@ -130,17 +131,18 @@ export default class Formasaurus extends Component {
 						child_props.ref = (el) => this[`${name}_${value}_input`] = el;
 
 						if (multiselect) {
-							child_props.onPress = this.updateMulitValue;
+							child_props.onPress = this.updateMultiValue;
 
 							if (state_val_exists && active) {
 								child_props.active = this.state.values[name].indexOf(value) > -1;
 							}
 						} else {
 							child_props.onPress = this.updateSingleValue;
-
-							if (state_val_exists && active) {
+// console.log(this.state.values[name] === value)
+// console.log(this.state.values[name])
+							// if (state_val_exists && active) {
 								child_props.active = this.state.values[name] === value;
-							}
+							// }
 						}
 					}
 				}
@@ -181,6 +183,13 @@ export default class Formasaurus extends Component {
 	getValues() {
 		return this.processValues(this.state.values);
 	}
+	
+	resetValues() {
+		this.setState({ values: Object.assign({}, this.state.dynamic_values) }, () => {
+			// console.log(this.state)
+			// this.setInputValues(this.props.children);
+		});
+	}
 
 	setInputValues(children, inputs = { dynamic_values: {}, values: {}, required: [] }) {
 		React.Children.forEach(children, (child, i) => {
@@ -190,7 +199,7 @@ export default class Formasaurus extends Component {
 			} else {
 				// console.log(child);
 				const {
-					active,
+					// active,
 					children,
 					multiselect,
 					name,
@@ -223,6 +232,7 @@ export default class Formasaurus extends Component {
 						const dynamic_val = get(this.state, `dynamic_values.${name}`, []);
 						const val_exists = dynamic_val.indexOf(value) > -1;
 						const input_ref = this[`${name}_${value}_input`];
+						const active = input_ref && input_ref.isActive();
 						// Values only get pushed into 'dynamic_values' if 'active is set in the view.'
 						if (active) {
 							let dynamic_values = inputs.dynamic_values[name];
@@ -254,11 +264,15 @@ export default class Formasaurus extends Component {
 						const dynamic_val = get(this.state, `dynamic_values.${name}`, null);
 						const val_exists = dynamic_val === value;
 						const input_ref = this[`${name}_${value}_input`];
+						const active = input_ref && input_ref.isActive();
 
 						if (active) {
 							inputs.dynamic_values[name] = value;
+						} else {
+							inputs.dynamic_values[name] = inputs.dynamic_values[name] || null;
 						}
-
+// console.log(`single select ${value} = ${active}`)
+// console.log(dynamic_val)
 						if ((active && !val_exists) || (!active && val_exists)) {
 							//outside changed
 							// console.log(`single select ${value} = ${active}`)
@@ -269,6 +283,7 @@ export default class Formasaurus extends Component {
 							}
 						} else {
 							//check for inside change
+							
 							if (exists(input_ref) && input_ref.isActive()) {
 								inputs.values[name] = value;
 							} else {
@@ -309,7 +324,7 @@ export default class Formasaurus extends Component {
 	// 	}
 	// }
 
-	updateMulitValue = (name, value, active, type, callback) => {
+	updateMultiValue = (name, value, active, type, callback) => {
 		let new_values = this.getNewValuesState();
 		const val_exists = new_values[name].indexOf(value) > -1;
 

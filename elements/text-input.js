@@ -1,13 +1,11 @@
-import React, {
-	Component,
-	PropTypes
-} from 'react';
+import React, { Component } from 'react';
 import {
 	StyleSheet,
 	Text,
 	TextInput,
 	View
 } from 'react-native';
+import PropTypes from 'prop-types';
 import Color from 'color-js';
 
 export const FormInputLabel = (props) => {
