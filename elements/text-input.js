@@ -155,7 +155,6 @@ const styles = StyleSheet.create({
 		paddingLeft: 5,
 		paddingRight: 5,
 		fontSize: 14,
-		lineHeight: 2
 	},
 	wrapper: {
 		marginRight: 5,

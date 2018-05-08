@@ -1,6 +1,6 @@
 {
   "name": "react-native-formasaurus",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "A flexible layout and validation component for forms in React Native.",
   "main": "index.js",
   "scripts": {
